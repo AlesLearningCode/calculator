@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+p{
+    text-align:right
+}
+.content{
+    border: solid black 1px;
+    padding: 10px;
+    background-color: grey;
+    display:flex;
+    flex-direction: column;
+    width: max-content;
+    justify-content: space-around;
+    height: 300px;
+}
+.display{
+    background-color:aquamarine;
+    flex:1;
+    margin-bottom: 20px ;
+    text-align: right;
+    padding:10px;
+}
+.buttons{
+    display: flex;
+}
+.operators{
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+}
+.operators button{
+    flex-grow: 1;
+}
+button{
+    padding: 15px;
+    margin: 2px;
+}
