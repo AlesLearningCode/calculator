@@ -36,14 +36,14 @@ function operate(operator,num1,num2){
                 result += num2; 
                 value.operator = `0`
                 value.num2 = 0
-            }else if(result === 0){
+            }else{
                 result = num1 + num2
                 value.operator = `0`
                 value.num2 = 0
             }
-        }
-
+            display.textContent = `${result}`;
             break;
+        }  
         case `-`:
             if(clicked === true){
                 return result
@@ -79,32 +79,30 @@ function operate(operator,num1,num2){
             break;
         }
         case `/`:
+            // console.log(value.num2)
             if(clicked === true){
                 display.textContent = `${result}`;
                 result
             }else{
-            if(value.num2 === 0){
-                display.textContent = "Infinity" 
-                result = 0
-                value.num1 = 0
+            if(value.operator === `/` && value.num2 === 0){
+                result = `Can't divide by 0` 
                 value.num2 = 0
-                value.operator = 0
+                value.operator = `0`
+                console.log(value.operator)
             }else if (result > 0 || result < 0){
                 result /= num2;
                 value.operator = `0`
                 value.num2 = 0
-                display.textContent = `${result}`;
             }else{
                 result = num1 / num2
                 value.operator = `0`
                 value.num2 = 0
-                display.textContent = `${result}`;
             }
         }
-            //display.textContent = `${result}`;
-
+            display.textContent = `${result}`;
+            console.log(result)
             break;
-        }
+        } 
     }
 
 
@@ -117,36 +115,49 @@ for(let i = 0; i < numberArray.length; i++){
             display.textContent = `${value.num2}`
         }else if(value.operator === 0){
             value.num1 = (value.num1*10) + (i)
+            value.num2 = 0;
             display.textContent = `${value.num1}`;
         }else if(value.operator === `-` || value.operator === `+` || 
         value.operator === `*`  || value.operator === `/`){
             value.num2 = (value.num2*10) + (i)
             display.textContent = `${value.num2}`
         }
-        console.log(value.num1)
-        console.log(value.num2)
         clicked = false
     })
 }
 for(let j = 0; j < operatorArray.length; j += 2){
     operatorArray[j].addEventListener(`click`, () => {
         operate(value.operator,value.num1,value.num2)
+        value.num2 = 0
         clicked = true;
         display.textContent = operatorArray[j+1];
         value.operator = operatorArray[j+1] ;
-        if(result > 0 || result < 0){
+        /* if(value.operator === `/` && value.num2 === 0){
+            display.textContent = `Can't divide by 0` 
+            value.num2 = 0
+            // value.operator = 0
+        }*/ if(result > 0 || result < 0){
             value.num1 = result
         }
-        display.textContent = `${value.num1} ${operatorArray[j+1]}`;
+        display.textContent = `${value.num1}`;
     })
-    console.log(j)
 }
 
 
 equals.addEventListener(`click`, () =>{
     operate(value.operator,value.num1,value.num2)
     clicked = true;
-    display.textContent = `${result}`;
+    if(value.operator === `/` && value.num2 === 0){
+        result = `Can't divide by 0` 
+        value.num2 = 0
+        value.operator = 0
+        console.log(value.operator)
+    }
+    if(result > 0 || result < 0){
+        value.num1 = result
+        display.textContent = `${BigInt(value.num1)}`;
+    }
+    
 })
 clear.addEventListener(`click`,()=> {
     value.num1 = 0
