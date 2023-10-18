@@ -16,6 +16,7 @@ const divide = document.querySelector(`.divide`);
 const equals = document.querySelector(`.equals`)
 const clear = document.querySelector(`.clear`)
 const numberArray = [zero, one, two, three, four, five, six, seven, eight, nine]
+const operatorArray = [plus, `+`, minus, `-`, multiply, `*`, divide, `/`]
 let value = {
     num1: 0,
     num2: 0,
@@ -127,48 +128,21 @@ for(let i = 0; i < numberArray.length; i++){
         clicked = false
     })
 }
+for(let j = 0; j < operatorArray.length; j += 2){
+    operatorArray[j].addEventListener(`click`, () => {
+        operate(value.operator,value.num1,value.num2)
+        clicked = true;
+        display.textContent = operatorArray[j+1];
+        value.operator = operatorArray[j+1] ;
+        if(result > 0 || result < 0){
+            value.num1 = result
+        }
+        display.textContent = `${value.num1} ${operatorArray[j+1]}`;
+    })
+    console.log(j)
+}
 
 
-plus.addEventListener(`click`, () => {
-    operate(value.operator,value.num1,value.num2)
-    clicked = true;
-    display.textContent = `+`;
-    value.operator = `+` ;
-    if(result > 0 || result < 0){
-        value.num1 = result
-    }
-    display.textContent = `${value.num1} +`;
-})
-minus.addEventListener(`click`, () => {
-    operate(value.operator,value.num1,value.num2)
-    clicked = true;
-    display.textContent = `-`;
-    value.operator = `-`;
-    if(result > 0 || result < 0){
-        value.num1 = result
-    }
-    display.textContent = `${value.num1} -`;
-})
-multiply.addEventListener(`click`, () => {
-    operate(value.operator,value.num1,value.num2)
-    clicked = true;
-    display.textContent = `*`;
-    value.operator = `*`;
-    if(result > 0 || result < 0){
-        value.num1 = result
-    }
-    display.textContent = `${value.num1} *`;
-})
-divide.addEventListener(`click`, () => {
-    operate(value.operator,value.num1,value.num2)
-    clicked = true;
-    display.textContent = `/`;
-    value.operator = `/`;
-    if(result > 0 || result < 0){
-        value.num1 = result
-    }
-    display.textContent = `${value.num1} /`;
-})
 equals.addEventListener(`click`, () =>{
     operate(value.operator,value.num1,value.num2)
     clicked = true;
