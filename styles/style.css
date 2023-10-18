@@ -9,6 +9,12 @@ body{
     align-items: center;
     height: 100vh;
 }
+button{
+    height: 60px;
+    width: 60px;
+    border-radius: 20%;
+    border: solid grey 0.5px;
+}
 .display{
     background-color:aquamarine;
     margin-bottom: 20px ;
@@ -37,7 +43,15 @@ body{
     display: flex;
     flex-direction: column;
 }
-button{
-    padding: 20px;
-    margin: 4px;
+.operators button{
+    margin-bottom: 7px;
+}
+.left-side{
+    margin-right: 8px;
+}
+.zero-button{
+    margin-bottom: 7px;
+}
+.numbers{
+    margin-bottom: 7px;
 }
