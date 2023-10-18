@@ -15,14 +15,15 @@ const multiply = document.querySelector(`.multiply`);
 const divide = document.querySelector(`.divide`);
 const equals = document.querySelector(`.equals`)
 const clear = document.querySelector(`.clear`)
+const numberArray = [zero, one, two, three, four, five, six, seven, eight, nine]
 let value = {
-    num1: `0`,
-    num2: `0`,
+    num1: 0,
+    num2: 0,
     operator : 0
 }
 let clicked
 let result = 0
-let array = [one, two, three, four, five, six, seven, eight, nine]
+
 
 function operate(operator,num1,num2){
     switch(operator){
@@ -80,7 +81,10 @@ function operate(operator,num1,num2){
             if(clicked === true){
                 return result
             }else{
-            if(result > 0 || result < 0){
+            /*if(value.num2 === 0){
+              result = 0
+                display.textContent = `You can't divide by 0`
+            }*/if (result > 0 || result < 0){
                 result /= num2;
                 value.operator = `0`
                 value.num2 = 0
@@ -89,34 +93,34 @@ function operate(operator,num1,num2){
                 value.operator = `0`
                 value.num2 = 0
             }
+        }
             display.textContent = `${result}`;
 
             break;
         }
     }
-}
 
 
 
-for(let i = 0; i < array.length; i++){
-    array[i].addEventListener('click', () =>{
+for(let i = 0; i < numberArray.length; i++){
+    numberArray[i].addEventListener('click', () =>{
         if(result > 0){
             value.num1 = result
-            value.num2 = (value.num2*10) + (i+1)
+            value.num2 = (value.num2*10) + (i)
             display.textContent = `${value.num2}`
         }else if(value.operator === 0){
-            value.num1 = (value.num1*10) + (i+1)
+            value.num1 = (value.num1*10) + (i)
             display.textContent = `${value.num1}`;
         }else if(value.operator === `-` || value.operator === `+` || 
         value.operator === `*`  || value.operator === `/`){
-            value.num2 = (value.num2*10) + (i+1)
+            value.num2 = (value.num2*10) + (i)
             display.textContent = `${value.num2}`
         }
+        console.log(value.num1)
+    console.log(value.num2)
         clicked = false
     })
 }
-
-
 
 
 plus.addEventListener(`click`, () => {
@@ -131,7 +135,7 @@ minus.addEventListener(`click`, () => {
     clicked = true;
     display.textContent = `-`;
     value.operator = `-`;
-    display.textContent = `${value.num2}`
+    display.textContent = `${result}`;
 })
 multiply.addEventListener(`click`, () => {
     operate(value.operator,value.num1,value.num2)
