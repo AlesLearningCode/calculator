@@ -79,22 +79,28 @@ function operate(operator,num1,num2){
         }
         case `/`:
             if(clicked === true){
-                return result
+                display.textContent = `${result}`;
+                result
             }else{
-            /*if(value.num2 === 0){
-              result = 0
-                display.textContent = `You can't divide by 0`
-            }*/if (result > 0 || result < 0){
+            if(value.num2 === 0){
+                display.textContent = "Infinity" 
+                result = 0
+                value.num1 = 0
+                value.num2 = 0
+                value.operator = 0
+            }else if (result > 0 || result < 0){
                 result /= num2;
                 value.operator = `0`
                 value.num2 = 0
+                display.textContent = `${result}`;
             }else{
                 result = num1 / num2
                 value.operator = `0`
                 value.num2 = 0
+                display.textContent = `${result}`;
             }
         }
-            display.textContent = `${result}`;
+            //display.textContent = `${result}`;
 
             break;
         }
@@ -117,7 +123,7 @@ for(let i = 0; i < numberArray.length; i++){
             display.textContent = `${value.num2}`
         }
         console.log(value.num1)
-    console.log(value.num2)
+        console.log(value.num2)
         clicked = false
     })
 }
@@ -128,28 +134,40 @@ plus.addEventListener(`click`, () => {
     clicked = true;
     display.textContent = `+`;
     value.operator = `+` ;
-    display.textContent = `${result}`;
+    if(result > 0 || result < 0){
+        value.num1 = result
+    }
+    display.textContent = `${value.num1} +`;
 })
 minus.addEventListener(`click`, () => {
     operate(value.operator,value.num1,value.num2)
     clicked = true;
     display.textContent = `-`;
     value.operator = `-`;
-    display.textContent = `${result}`;
+    if(result > 0 || result < 0){
+        value.num1 = result
+    }
+    display.textContent = `${value.num1} -`;
 })
 multiply.addEventListener(`click`, () => {
     operate(value.operator,value.num1,value.num2)
     clicked = true;
     display.textContent = `*`;
     value.operator = `*`;
-    display.textContent = `${result}`;
+    if(result > 0 || result < 0){
+        value.num1 = result
+    }
+    display.textContent = `${value.num1} *`;
 })
 divide.addEventListener(`click`, () => {
     operate(value.operator,value.num1,value.num2)
     clicked = true;
     display.textContent = `/`;
     value.operator = `/`;
-    display.textContent = `${result}`;
+    if(result > 0 || result < 0){
+        value.num1 = result
+    }
+    display.textContent = `${value.num1} /`;
 })
 equals.addEventListener(`click`, () =>{
     operate(value.operator,value.num1,value.num2)
