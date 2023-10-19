@@ -4,28 +4,30 @@
     padding: 0;
 }
 body{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding: 40px;
 }
 button{
-    height: 60px;
-    width: 60px;
+    height: 70px;
+    width: 70px;
     border-radius: 20%;
     border: solid grey 0.5px;
+    background-color: #0B032D;
+    color: white;
+}
+button:hover{
+    border: white 2px ridge;
 }
 .display{
-    background-color:aquamarine;
+    background-color:#FFB997;
     margin-bottom: 20px ;
-    text-align: right;
-    padding:10px;
-    height: 50px;
+    padding: 50px 10px 10px 10px;
+    height: 80px;
+    text-align: end;
 }
 .content{
     border: solid black 1px;
     padding: 10px;
-    background-color: grey;
+    background-color: #74546A;
     display:flex;
     flex-direction: column;
     justify-content: space-around;
