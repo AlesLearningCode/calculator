@@ -28,10 +28,10 @@ button{
     background-color: grey;
     display:flex;
     flex-direction: column;
-    width: max-content;
     justify-content: space-around;
     flex: 0 0 auto;
     height: max-content;
+    width: max-content;
 }
 .buttons{
     display:flex;
@@ -51,7 +51,22 @@ button{
 }
 .zero-button{
     margin-bottom: 7px;
+    display: flex;
+    gap: 10px;
 }
 .numbers{
     margin-bottom: 7px;
+}
+#zero{
+    display: flex;
+    flex: 1;
+    align-items: end;
+    gap: 10px;
+}
+.clear,
+.zero,
+.delete,
+.equals{
+    flex-grow: 2;
+    border-radius: 10%;
 }
