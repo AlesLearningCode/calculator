@@ -5,6 +5,8 @@
 }
 body{
     padding: 40px;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
 }
 button{
     height: 70px;
@@ -13,6 +15,8 @@ button{
     border: solid grey 0.5px;
     background-color: #0B032D;
     color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
 }
 button:hover{
     border: white 2px ridge;
@@ -59,16 +63,14 @@ button:hover{
 .numbers{
     margin-bottom: 7px;
 }
-#zero{
+#bottom{
     display: flex;
     flex: 1;
     align-items: end;
     gap: 10px;
 }
 .clear,
-.zero,
-.delete,
 .equals{
     flex-grow: 2;
-    border-radius: 10%;
+    border-radius: 5%;
 }
